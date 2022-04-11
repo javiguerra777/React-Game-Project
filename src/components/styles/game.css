@@ -1,0 +1,10 @@
+.choices {
+    background-color: yellow;
+    margin: 10px 0 0 10px;
+    height: 30px;
+    width: 40px;
+}
+.choices:hover {
+    background-color: yellowgreen;
+    color: whitesmoke;
+}
