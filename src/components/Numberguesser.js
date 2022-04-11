@@ -6,8 +6,8 @@ import './styles/numberguesser.css';
 const answer = Math.round(Math.random() * 9);
 
 const NumberGuesser = () => {
-    //console.log(`The answer is ${answer}`);
-    const numGuesses = 10;
+    console.log(`The answer is ${answer}`);
+    const numGuesses = 3;
     const [guessesLeft, setGuessesLeft] = useState(numGuesses);
     const [gameWon, setGameWon] = useState(false);
     const [gameOver, setGameOver] = useState(false);

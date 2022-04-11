@@ -36,7 +36,7 @@ const Game = (props) => {
     return (
         <main className='game'>
             <header>
-            <h1>You have this number of guesses left: {props.guessesLeft}/ {props.numGuesses}</h1>
+            <h1>You have {props.guessesLeft} number of guesses left</h1>
             </header>
             <h1>Select a Number to take a Guess</h1>
         <section id ="row">
