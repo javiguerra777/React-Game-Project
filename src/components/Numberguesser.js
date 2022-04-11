@@ -2,41 +2,48 @@ import Win from './Win';
 import Lose from './Lose';
 import Game from './Game';
 import {useState, useEffect} from 'react';
+import data from '../services/data';
 import './styles/numberguesser.css';
-const answer = Math.round(Math.random() * 9);
+
+//Gives Random answer
+const answer = Math.round(Math.random() * (data.length - 1));
 
 const NumberGuesser = () => {
     console.log(`The answer is ${answer}`);
-    const numGuesses = 3;
+    const numGuesses = 3; //number of guesses allowed
+    //guesses left in game
     const [guessesLeft, setGuessesLeft] = useState(numGuesses);
+    //these states are used to determine what to show user at end game
     const [gameWon, setGameWon] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    //used useEffect to offset error in code
     useEffect(()=> {
         if(guessesLeft === 0){
             setGameOver(true);
         }
-    }, [guessesLeft])
-    const game = (choice) => {
+    }, [guessesLeft]);
+    //game function
+    const playGame = (choice) => {
         if(guessesLeft > 0){
             setGuessesLeft(prev => prev - 1);
             if(choice === answer){
                 setGameWon(true);
                 setGameOver(true);
-            } else {
-                console.log('Wrong answer')
             } 
         }
+
     }
+    //used to restart game in endgame screen
     const restart = () => {
         window.location.reload(false);
     }
-    if(!gameOver){ return (
-        <Game onClick={game} numGuesses = {numGuesses} guessesLeft={guessesLeft}/>
-    )} else if (gameOver && gameWon){
+    if(!gameOver){ return ( //shows the gamestate
+        <Game onClick={playGame} guessesLeft={guessesLeft}/>
+    )} else if (gameOver && gameWon){ //gamewon state
         return (
         <Win onClick={restart}/>
         );
-    }else {
+    }else { //game lost state
         return (
         <Lose onClick={restart}/>
         )

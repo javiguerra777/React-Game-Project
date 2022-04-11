@@ -1,37 +1,8 @@
 import './styles/game.css';
 import { nanoid } from 'nanoid';
-const data = [
-    {
-    number: 0
-    },
-    {
-    number: 1
-    },
-    {
-    number: 2
-    },
-    {
-    number: 3
-    },
-    {
-    number: 4
-    },
-    {
-    number: 5
-    },
-    {
-    number: 6
-    },
-    {
-    number: 7
-    },
-    {
-    number: 8
-    },
-    {
-    number: 9
-    },
-]
+import data from '../services/data';
+
+//Game component
 const Game = (props) => {
     return (
         <main className='game'>
@@ -39,7 +10,9 @@ const Game = (props) => {
             <h1>You have {props.guessesLeft} number of guesses left</h1>
             </header>
             <h1>Select a Number to take a Guess</h1>
-        <section id ="row">
+        <section id ="row"> 
+        {/* used map function to filter through data array 
+        passed through the data services. */}
         {data.map(item => <button className='choices' key={nanoid()} onClick={()=>props.onClick(item.number)}>{item.number}</button>)}
         </section>
         </main>
