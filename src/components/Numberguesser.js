@@ -9,7 +9,6 @@ import './styles/numberguesser.css';
 const answer = Math.round(Math.random() * (data.length - 1));
 
 const NumberGuesser = () => {
-    console.log(`The answer is ${answer}`);
     const numGuesses = 3; //number of guesses allowed
     //guesses left in game
     const [guessesLeft, setGuessesLeft] = useState(numGuesses);
